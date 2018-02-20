@@ -111,7 +111,7 @@ public class RhoInstall extends ExecuteShell{
 		try {
 			
 			
-			String tailText = "touch tailText.txt > yum repolist epel*.rpm";
+			String tailText = "touch tailText.txt \\> yum repolist epel*.rpm";
 			obj.executeCommand(tailText);
 			String output = "cat tailText.txt";
 			obj.executeCommand(output);

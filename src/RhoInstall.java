@@ -54,10 +54,15 @@ public class RhoInstall extends ExecuteShell{
 					if(yes_no.contains("y")|| yes_no.contains("yes")) {
 						System.out.print("Installing extra packages\n");
 						//Execute Bash Command
-						String loadEpel = "rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm";
-						String output = obj.executeCommand(loadEpel);
-						
-						System.out.printf("%s", output);
+						try {
+								String loadEpel = "rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm";			
+								String output = obj.executeCommand(loadEpel);
+								//output.wait(2000);
+								System.out.printf("%s", output);	
+								
+							}  catch (Exception e) {
+									
+						}
 					} 
 					if(yes_no.contains("n") || yes_no.contains("no")){
 						System.out.print("Installation Cancelled\n");

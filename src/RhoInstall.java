@@ -10,7 +10,9 @@ public class RhoInstall extends ExecuteShell{
 	{
 		@SuppressWarnings("resource")
 		Scanner input = new Scanner( System.in );
-		String version = "CentOS7";
+		String version = "RHEL7";
+		
+		
 		
 		//RhoSetup myRhoSetup = new RhoSetup();
 		
@@ -155,7 +157,18 @@ public class RhoInstall extends ExecuteShell{
 					}
 			}
 		//Install Rho RHEL6 or RHEL7
-		if(version == "RHEL7" || version == "CentOS7") {
+		if(version == "RHEL7") {
+			try {
+					
+					String outText = "yum -y install rho";	
+					outText.wait(3000);
+					String output = obj.executeCommand(outText);
+					System.out.printf("\n%s", output);
+					}  catch (Exception e) {
+							
+				}
+		}
+		if(version == "CentOS7") {
 			try {
 					
 					String outText = "yum -y install rho";	
@@ -166,7 +179,19 @@ public class RhoInstall extends ExecuteShell{
 							
 				}
 		} 
-		if(version == "RHEL6" || version == "CentOS6") {
+		if(version == "RHEL6") {
+			try {
+				
+				String outText = "yum -y install python-devel python-pip; easy_install -U pycrypto; \\\n" + 
+						"pip install -U Jinja2";	
+				outText.wait(3000);
+				String output = obj.executeCommand(outText);
+				System.out.printf("\n%s", output);
+				}  catch (Exception e) {
+						
+			}
+		}
+		if(version == "CentOS6") {
 			try {
 				
 				String outText = "yum -y install python-devel python-pip; easy_install -U pycrypto; \\\n" + 
@@ -183,6 +208,6 @@ public class RhoInstall extends ExecuteShell{
 		
 		System.out.print("\nRho has been successfully installed!\n\n");
 		System.out.print("Run command \"rho\" to view available commands\n\n");
-		System.out.printf("\n%", version);
+		System.out.printf("\n%s", version);
 	}
 }

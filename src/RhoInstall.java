@@ -110,13 +110,8 @@ public class RhoInstall extends ExecuteShell{
 		
 		try {
 			
-			String strRegex = " | ";
-			String frontText = "yum repolist";
-			String tailText = "tail -n 5";
-			String tailOutput = frontText + strRegex + tailText;
-			
-			
-			String output = obj.executeCommand(tailOutput);
+			String tailText = "yum repolist";			
+			String output = obj.executeCommand(tailText);
 			//output.wait(2000);
 			System.out.printf("%s", output);
 				

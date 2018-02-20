@@ -111,7 +111,7 @@ public class RhoInstall extends ExecuteShell{
 		try {
 			
 			
-			String tailText = "yum repolist epel*.rpm | tail -n 5";
+			String tailText = "yum repolist | tail -n 5";
 			String output = obj.executeCommand(tailText);
 			//output.wait(2000);
 			System.out.printf("%s", output);
@@ -119,7 +119,7 @@ public class RhoInstall extends ExecuteShell{
 			}  catch (Exception e) {
 					
 			}
-		//Newer
+		//New
 		
 		
 	}

@@ -36,7 +36,7 @@ public class ExecuteShell {
 
                         String line = "";
 			while ((line = reader.readLine())!= null) {
-				output.append(line);
+				output.append(line + "\n");
 			}
 
 		} catch (Exception e) {

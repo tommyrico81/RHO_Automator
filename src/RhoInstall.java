@@ -8,10 +8,11 @@ public class RhoInstall extends ExecuteShell{
 	
 	public static void main( String[] args )
 	{
-		@SuppressWarnings("resource")
-		Scanner input = new Scanner( System.in );
+		
 		String version = "RHEL7";
 		
+		@SuppressWarnings("resource")
+		Scanner input = new Scanner( System.in );
 		
 		
 		//RhoSetup myRhoSetup = new RhoSetup();
@@ -208,6 +209,6 @@ public class RhoInstall extends ExecuteShell{
 		
 		System.out.print("\nRho has been successfully installed!\n\n");
 		System.out.print("Run command \"rho\" to view available commands\n\n");
-		System.out.printf("\n%s", version);
+		System.out.printf("\n%s", version + "test");
 	}
 }

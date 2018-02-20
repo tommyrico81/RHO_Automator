@@ -154,7 +154,7 @@ public class RhoInstall extends ExecuteShell{
 					}
 			}
 		
-		System.out.print("\npackages have been installed, ready to install RHO.\n");
+		System.out.print("\nPackages successfully installed\n");
 		//Install Rho RHEL6 or RHEL7
 		if(version == "RHEL7") {
 			try {
@@ -182,6 +182,6 @@ public class RhoInstall extends ExecuteShell{
 		//End Rho Install scripts
 		
 		System.out.print("\nRho has been successfully installed!\n\n");
-		System.out.print("Run command \"rho\" to view available commands");
+		System.out.print("Run command \"rho\" to view available commands\n\n");
 	}
 }

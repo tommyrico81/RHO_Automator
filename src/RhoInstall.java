@@ -10,7 +10,7 @@ public class RhoInstall extends ExecuteShell{
 	{
 		@SuppressWarnings("resource")
 		Scanner input = new Scanner( System.in );
-		String version = null;
+		String version = "null";
 		
 		//RhoSetup myRhoSetup = new RhoSetup();
 		
@@ -42,23 +42,8 @@ public class RhoInstall extends ExecuteShell{
 		System.out.print("\nEnter the number associated with your linux distribution: ");
 		String distro = input.nextLine();
 		int distroInt = Integer.parseInt(distro);
+			
 		
-			switch(distroInt) 
-			{
-				case 1:
-					version ="6";
-				break;
-				case 2:
-					version ="7";
-				break;
-				case 3:
-					version ="6";
-				break;
-				case 4:
-					version ="7";
-				break;
-			}
-	
 		
 		String yes_no;
 		ExecuteShell obj = new ExecuteShell();
@@ -75,7 +60,8 @@ public class RhoInstall extends ExecuteShell{
 								String loadEpel = "rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm";			
 								String output = obj.executeCommand(loadEpel);
 								//output.wait(2000);
-								System.out.printf("%s", output);	
+								System.out.printf("%s", output);
+								version = "RHEL6";
 							
 								
 							}  catch (Exception e) {
@@ -95,6 +81,7 @@ public class RhoInstall extends ExecuteShell{
 						String loadEpel = "rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm";
 						String output = obj.executeCommand(loadEpel);
 						System.out.print(output);
+						version = "RHEL7";
 					
 					} 
 					if(yes_no.contains("n") || yes_no.contains("no")){
@@ -136,36 +123,65 @@ public class RhoInstall extends ExecuteShell{
 		
 		try {
 			
-				String tailText = "yum repolist";			
-				String output = obj.executeCommand(tailText);
+				String outText = "yum repolist";			
+				String output = obj.executeCommand(outText);
 				//output.wait(2000);
-				System.out.printf("%s", output);
+				System.out.printf("\n%s", output);
 				}  catch (Exception e) {
 					
 			}
+		
 		//Install subscription-manager
 		try {
 			
-				String tailText = "yum install subscription-manager";			
-				String output = obj.executeCommand(tailText);
+				String outText = "yum install subscription-manager";			
+				String output = obj.executeCommand(outText);
 				//output.wait(2000);
-				System.out.printf("%s", output);
+				System.out.printf("\n%s", output);
 				}  catch (Exception e) {
 					
 			}
-		//Enable repos with subscription-manager
-		try {
+		//Enable repos with subscription-manager for RHEL 7 only
+		if(version == "RHEL7"){
+			try {
 			
-				String tailText = "subscription-manager repos --enable rhel-" + version + "-server-extra-rpms";			
-				String output = obj.executeCommand(tailText);
-				//output.wait(2000);
-				System.out.printf("%s", output);
-				}  catch (Exception e) {
+					String outText = "subscription-manager repos --enable rhel-7-server-extra-rpms";			
+					String output = obj.executeCommand(outText);
+					//output.wait(2000);
+					System.out.printf("\n%s", output);
+					}  catch (Exception e) {
 					
+					}
 			}
 		
+		System.out.print("\npackages have been installed, ready to install RHO.\n");
+		//Install Rho RHEL6 or RHEL7
+		if(version == "RHEL7") {
+			try {
+					
+					String outText = "yum install rho";	
+					outText.wait(3000);
+					String output = obj.executeCommand(outText);
+					System.out.printf("\n%s", output);
+					}  catch (Exception e) {
+							
+				}
+		} 
+		if(version == "RHEL6") {
+			try {
+				
+				String outText = "yum -y install python-devel python-pip; easy_install -U pycrypto; \\\n" + 
+						"pip install -U Jinja2";	
+				outText.wait(3000);
+				String output = obj.executeCommand(outText);
+				System.out.printf("\n%s", output);
+				}  catch (Exception e) {
+						
+			}
+		}
+		//End Rho Install scripts
 		
-		
-		
+		System.out.print("\nRho has been successfully installed!\n\n");
+		System.out.print("Run command \"rho\" to view available commands");
 	}
 }

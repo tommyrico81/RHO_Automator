@@ -49,7 +49,7 @@ public class RhoInstall extends ExecuteShell{
 			switch(distroInt)
 			{
 				case 1:
-					System.out.print("\nYou've selected RHEL 6, do you wish do download and install these packages?(type \"y\" or \"yes\")");
+					System.out.print("\nYou've selected RHEL 6.\nDo you wish do download and install these packages?(type \"y\" or \"yes\")");
 					yes_no = input.nextLine();
 					if(yes_no.contains("y")|| yes_no.contains("yes")) {
 						System.out.print("Installing extra packages\n");
@@ -64,7 +64,7 @@ public class RhoInstall extends ExecuteShell{
 					}
 					break;
 				case 2:
-					System.out.print("\nYou've selected RHEL 7, do you wish do download these packages?(type \"y\" or \"yes\")");
+					System.out.print("\nYou've selected RHEL 7.\nDo you wish do download these packages?(type \"y\" or \"yes\")");
 					yes_no = input.nextLine();
 					if(yes_no.contains("y")|| yes_no.contains("yes")) {
 						System.out.print("Installing extra packages\n");
@@ -78,7 +78,7 @@ public class RhoInstall extends ExecuteShell{
 					}
 					break;
 				case 3:
-					System.out.print("\nYou've selected CentOS 6, do you wish do download these packages?(type \"y\" or \"yes\")");
+					System.out.print("\nYou've selected CentOS 6.\nDo you wish do download these packages?(type \"y\" or \"yes\")");
 					yes_no = input.nextLine();
 					if(yes_no.contains("y")|| yes_no.contains("yes")) {
 						System.out.print("Installing extra packages\n");
@@ -92,7 +92,7 @@ public class RhoInstall extends ExecuteShell{
 					}
 					break;
 				case 4:
-					System.out.print("\nYou've selected CentOS 7, do you wish do download these packages?(type \"y\" or \"yes\")");
+					System.out.print("\nYou've selected CentOS 7.\nDo you wish do download these packages?(type \"y\" or \"yes\")");
 					yes_no = input.nextLine();
 					if(yes_no.contains("y")|| yes_no.contains("yes")) {
 						System.out.print("Installing extra packages\n");

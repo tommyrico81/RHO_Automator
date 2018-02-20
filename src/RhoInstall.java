@@ -112,7 +112,7 @@ public class RhoInstall extends ExecuteShell{
 			
 			String showEpel = "yum repolist epel*.rpm";
 			String output = obj.executeCommand(showEpel);
-			output.wait(4000);
+			//output.wait(4000);
 			System.out.printf("%s",output);
 				
 			}  catch (Exception e) {

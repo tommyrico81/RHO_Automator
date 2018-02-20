@@ -10,6 +10,7 @@ public class RhoInstall extends ExecuteShell{
 	{
 		@SuppressWarnings("resource")
 		Scanner input = new Scanner( System.in );
+		String version = null;
 		
 		//RhoSetup myRhoSetup = new RhoSetup();
 		
@@ -41,6 +42,22 @@ public class RhoInstall extends ExecuteShell{
 		System.out.print("\nEnter the number associated with your linux distribution: ");
 		String distro = input.nextLine();
 		int distroInt = Integer.parseInt(distro);
+		
+			switch(distroInt) 
+			{
+				case 1:
+					version ="6";
+				break;
+				case 2:
+					version ="7";
+				break;
+				case 3:
+					version ="6";
+				break;
+				case 4:
+					version ="7";
+				break;
+			}
 	
 		
 		String yes_no;
@@ -59,6 +76,7 @@ public class RhoInstall extends ExecuteShell{
 								String output = obj.executeCommand(loadEpel);
 								//output.wait(2000);
 								System.out.printf("%s", output);	
+							
 								
 							}  catch (Exception e) {
 									
@@ -77,6 +95,7 @@ public class RhoInstall extends ExecuteShell{
 						String loadEpel = "rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm";
 						String output = obj.executeCommand(loadEpel);
 						System.out.print(output);
+					
 					} 
 					if(yes_no.contains("n") || yes_no.contains("no")){
 						System.out.print("Installation Cancelled\n");
@@ -91,6 +110,7 @@ public class RhoInstall extends ExecuteShell{
 						String loadEpel = "rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm";
 						String output = obj.executeCommand(loadEpel);
 						System.out.print(output);
+					
 					} 
 					if(yes_no.contains("n") || yes_no.contains("no")){
 						System.out.print("Installation Cancelled\n");
@@ -105,6 +125,7 @@ public class RhoInstall extends ExecuteShell{
 						String loadEpel = "rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm";
 						String output = obj.executeCommand(loadEpel);
 						System.out.print(output);
+				
 					} 
 					if(yes_no.contains("n") || yes_no.contains("no")){
 						System.out.print("Installation Cancelled\n");
@@ -115,15 +136,35 @@ public class RhoInstall extends ExecuteShell{
 		
 		try {
 			
-			String tailText = "yum repolist";			
-			String output = obj.executeCommand(tailText);
-			//output.wait(2000);
-			System.out.printf("%s", output);
-				
-			}  catch (Exception e) {
+				String tailText = "yum repolist";			
+				String output = obj.executeCommand(tailText);
+				//output.wait(2000);
+				System.out.printf("%s", output);
+				}  catch (Exception e) {
 					
 			}
-		//New
+		//Install subscription-manager
+		try {
+			
+				String tailText = "yum install subscription-manager";			
+				String output = obj.executeCommand(tailText);
+				//output.wait(2000);
+				System.out.printf("%s", output);
+				}  catch (Exception e) {
+					
+			}
+		//Enable repos with subscription-manager
+		try {
+			
+				String tailText = "subscription-manager repos --enable rhel-" + version + "-server-extra-rpms";			
+				String output = obj.executeCommand(tailText);
+				//output.wait(2000);
+				System.out.printf("%s", output);
+				}  catch (Exception e) {
+					
+			}
+		
+		
 		
 		
 	}

@@ -183,5 +183,6 @@ public class RhoInstall extends ExecuteShell{
 		
 		System.out.print("\nRho has been successfully installed!\n\n");
 		System.out.print("Run command \"rho\" to view available commands\n\n");
+		System.out.print(version);
 	}
 }

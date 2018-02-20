@@ -119,5 +119,5 @@ public class RhoInstall extends ExecuteShell{
 					
 			}
 		
-	} https://github.com/tommyrico81/RHO_Automator.git
+	}
 }

@@ -95,6 +95,7 @@ public class RhoInstall extends ExecuteShell{
 						String loadEpel = "rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm";
 						String output = obj.executeCommand(loadEpel);
 						System.out.print(output);
+						version = "CentOS6";
 					
 					} 
 					if(yes_no.contains("n") || yes_no.contains("no")){
@@ -110,6 +111,7 @@ public class RhoInstall extends ExecuteShell{
 						String loadEpel = "rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm";
 						String output = obj.executeCommand(loadEpel);
 						System.out.print(output);
+						version = "CentOS7";
 				
 					} 
 					if(yes_no.contains("n") || yes_no.contains("no")){
@@ -128,6 +130,7 @@ public class RhoInstall extends ExecuteShell{
 				}  catch (Exception e) {
 					
 			}
+		System.out.print("\n\nExtra packages successfully installed\n\n");
 		
 		//Install subscription-manager
 		try {
@@ -151,10 +154,8 @@ public class RhoInstall extends ExecuteShell{
 					
 					}
 			}
-		
-		System.out.print("\nPackages successfully installed\n");
 		//Install Rho RHEL6 or RHEL7
-		if(version == "RHEL7") {
+		if(version == "RHEL7" || version == "CentOS7") {
 			try {
 					
 					String outText = "yum -y install rho";	
@@ -165,7 +166,7 @@ public class RhoInstall extends ExecuteShell{
 							
 				}
 		} 
-		if(version == "RHEL6") {
+		if(version == "RHEL6" || version == "CentOS6") {
 			try {
 				
 				String outText = "yum -y install python-devel python-pip; easy_install -U pycrypto; \\\n" + 

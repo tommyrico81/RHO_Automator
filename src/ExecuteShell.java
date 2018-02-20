@@ -35,8 +35,8 @@ public class ExecuteShell {
                             new BufferedReader(new InputStreamReader(p.getInputStream()));
 
                         String line = "";
-			while ((line = reader.readLine())!= null) {
-				output.append(line + "\n");
+			while ((line = reader.readLine())== null) {
+				output.append(line);
 			}
 
 		} catch (Exception e) {

@@ -10,7 +10,7 @@ public class RhoInstall extends ExecuteShell{
 	{
 		@SuppressWarnings("resource")
 		Scanner input = new Scanner( System.in );
-		String version = "null";
+		String version = "CentOS7";
 		
 		//RhoSetup myRhoSetup = new RhoSetup();
 		

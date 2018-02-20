@@ -155,7 +155,7 @@ public class RhoInstall extends ExecuteShell{
 					}
 			}
 		//Install Rho RHEL6 or RHEL7
-		if(version.equals("RHEL7") || version.equals("CentOS7")) {
+		if(version == "RHEL7" || version == "CentOS7") {
 			try {
 					
 					String outText = "yum -y install rho";	
@@ -166,7 +166,7 @@ public class RhoInstall extends ExecuteShell{
 							
 				}
 		} 
-		if(version.equals("RHEL6") || version.equals("CentOS6")) {
+		if(version == "RHEL6" || version == "CentOS6") {
 			try {
 				
 				String outText = "yum -y install python-devel python-pip; easy_install -U pycrypto; \\\n" + 
@@ -183,6 +183,6 @@ public class RhoInstall extends ExecuteShell{
 		
 		System.out.print("\nRho has been successfully installed!\n\n");
 		System.out.print("Run command \"rho\" to view available commands\n\n");
-		System.out.print(version);
+		System.out.printf("\n%", version);
 	}
 }

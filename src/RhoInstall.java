@@ -42,8 +42,6 @@ public class RhoInstall extends ExecuteShell{
 		System.out.print("\nEnter the number associated with your linux distribution: ");
 		String distro = input.nextLine();
 		int distroInt = Integer.parseInt(distro);
-			
-		
 		
 		String yes_no;
 		ExecuteShell obj = new ExecuteShell();
@@ -123,7 +121,7 @@ public class RhoInstall extends ExecuteShell{
 		
 		try {
 			
-				String outText = "yum repolist";			
+				String outText = "yum -y repolist";			
 				String output = obj.executeCommand(outText);
 				//output.wait(2000);
 				System.out.printf("\n%s", output);
@@ -134,7 +132,7 @@ public class RhoInstall extends ExecuteShell{
 		//Install subscription-manager
 		try {
 			
-				String outText = "yum install subscription-manager";			
+				String outText = "yum -y install subscription-manager";			
 				String output = obj.executeCommand(outText);
 				//output.wait(2000);
 				System.out.printf("\n%s", output);
@@ -159,7 +157,7 @@ public class RhoInstall extends ExecuteShell{
 		if(version == "RHEL7") {
 			try {
 					
-					String outText = "yum install rho";	
+					String outText = "yum -y install rho";	
 					outText.wait(3000);
 					String output = obj.executeCommand(outText);
 					System.out.printf("\n%s", output);
@@ -180,6 +178,7 @@ public class RhoInstall extends ExecuteShell{
 			}
 		}
 		//End Rho Install scripts
+		
 		
 		System.out.print("\nRho has been successfully installed!\n\n");
 		System.out.print("Run command \"rho\" to view available commands\n\n");

@@ -162,23 +162,23 @@ public class RhoInstall extends ExecuteShell{
 		switch(version) {
 		
 			case "RHEL7":
-					System.out.print("Proceed with installation of rho?(type \"y\" or \"yes\"");
+					System.out.print("Proceed with installation of rho?(type \"y\" or \"yes\")");
 					yes_no = input.nextLine();
 					if(yes_no.contains("y")|| yes_no.contains("yes")) {
-						String outText = "yum install rho";	
+						String outText = "yum -y install rho";	
 						String output = obj.executeCommand(outText);
 						System.out.printf("\n%s", output);
 					}
 			case "CentOS7":
-					System.out.print("Proceed with installation of rho?(type \"y\" or \"yes\"");
+					System.out.print("Proceed with installation of rho?(type \"y\" or \"yes\")");
 					yes_no = input.nextLine();
 					if(yes_no.contains("y")|| yes_no.contains("yes")) {
-						String outText = "yum install rho";	
+						String outText = "yum -y install rho";	
 						String output = obj.executeCommand(outText);
 						System.out.printf("\n%s", output);
 					}
 			case "RHEL6":	
-					System.out.print("Proceed with installation of rho?(type \"y\" or \"yes\"");
+					System.out.print("Proceed with installation of rho?(type \"y\" or \"yes\")");
 					yes_no = input.nextLine();
 					if(yes_no.contains("y")|| yes_no.contains("yes")) {
 						String outText = "yum -y install python-devel python-pip; easy_install -U pycrypto; \\\n pip install -U Jinja2";
@@ -186,7 +186,7 @@ public class RhoInstall extends ExecuteShell{
 						System.out.printf("\n%s", output);
 					}
 			case "CentOS6":
-					System.out.print("Proceed with installation of rho?(type \"y\" or \"yes\"");
+					System.out.print("Proceed with installation of rho?(type \"y\" or \"yes\")");
 					yes_no = input.nextLine();
 					if(yes_no.contains("y")|| yes_no.contains("yes")) {
 						String outText = "yum -y install python-devel python-pip; easy_install -U pycrypto; \\\n pip install -U Jinja2";

@@ -133,7 +133,7 @@ public class RhoInstall extends ExecuteShell{
 				}  catch (Exception e) {
 					
 			}
-		
+		/*
 		//Install subscription-manager
 		try {
 			
@@ -145,7 +145,7 @@ public class RhoInstall extends ExecuteShell{
 					
 			}
 		//Enable repos with subscription-manager for RHEL 7 only
-		/*if(version.compareTo(rhel7) == 0){
+		if(version.compareTo(rhel7) == 0){
 			try {
 			
 					String outText = "subscription-manager repos --enable rhel-7-server-extra-rpms";			
@@ -162,46 +162,36 @@ public class RhoInstall extends ExecuteShell{
 		switch(version) {
 		
 			case "RHEL7":
-				try {
-					
-					String outText = "yum install rho";	
-					outText.wait(3000);
-					String output = obj.executeCommand(outText);
-					System.out.printf("\n%s", output);
-					}  catch (Exception e) {
-							
-				}
+					System.out.print("Proceed with installation of rho?(type \"y\" or \"yes\"");
+					yes_no = input.nextLine();
+					if(yes_no.contains("y")|| yes_no.contains("yes")) {
+						String outText = "yum install rho";	
+						String output = obj.executeCommand(outText);
+						System.out.printf("\n%s", output);
+					}
 			case "CentOS7":
-				try {
-					
-					String outText = "yum install rho";	
-					outText.wait(3000);
-					String output = obj.executeCommand(outText);
-					System.out.printf("\n%s", output);
-					}  catch (Exception e) {
-							
-				}
-			case "RHEL6":
-				try {
-					
-					String outText = "yum -y install python-devel python-pip; easy_install -U pycrypto; \\\n" + 
-							"pip install -U Jinja2";	
-					outText.wait(3000);
-					String output = obj.executeCommand(outText);
-					System.out.printf("\n%s", output);
-					}  catch (Exception e) {
-							
-				}
+					System.out.print("Proceed with installation of rho?(type \"y\" or \"yes\"");
+					yes_no = input.nextLine();
+					if(yes_no.contains("y")|| yes_no.contains("yes")) {
+						String outText = "yum install rho";	
+						String output = obj.executeCommand(outText);
+						System.out.printf("\n%s", output);
+					}
+			case "RHEL6":	
+					System.out.print("Proceed with installation of rho?(type \"y\" or \"yes\"");
+					yes_no = input.nextLine();
+					if(yes_no.contains("y")|| yes_no.contains("yes")) {
+						String outText = "yum -y install python-devel python-pip; easy_install -U pycrypto; \\\n pip install -U Jinja2";
+						String output = obj.executeCommand(outText);
+						System.out.printf("\n%s", output);
+					}
 			case "CentOS6":
-				try {
-					
-					String outText = "yum -y install python-devel python-pip; easy_install -U pycrypto; \\\n" + 
-							"pip install -U Jinja2";	
-					outText.wait(3000);
-					String output = obj.executeCommand(outText);
-					System.out.printf("\n%s", output);
-					}  catch (Exception e) {
-							
+					System.out.print("Proceed with installation of rho?(type \"y\" or \"yes\"");
+					yes_no = input.nextLine();
+					if(yes_no.contains("y")|| yes_no.contains("yes")) {
+						String outText = "yum -y install python-devel python-pip; easy_install -U pycrypto; \\\n pip install -U Jinja2";
+						String output = obj.executeCommand(outText);
+						System.out.printf("\n%s", output);
 				}
 		}
 		//End Rho Install scripts

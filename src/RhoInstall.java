@@ -61,17 +61,12 @@ public class RhoInstall extends ExecuteShell{
 					if(yes_no.contains("y")|| yes_no.contains("yes")) {
 						System.out.print("Installing extra packages\n");
 						//Execute Bash Command
-						try {
-								String loadEpel = "rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm";			
-								String output = obj.executeCommand(loadEpel);
-								//output.wait(2000);
-								System.out.printf("%s", output);
-								version = "RHEL6";
-							
-								
-							}  catch (Exception e) {
-									
-						}
+						String loadEpel = "rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm";			
+						String output = obj.executeCommand(loadEpel);
+						//output.wait(2000);
+						System.out.printf("%s", output);
+						version = "RHEL6";
+						
 					} 
 					if(yes_no.contains("n") || yes_no.contains("no")){
 						System.out.print("Installation Cancelled\n");
@@ -130,9 +125,9 @@ public class RhoInstall extends ExecuteShell{
 		
 		try {
 			
-				String outText = "yum -y repolist";			
+				String outText = "yum repolist";			
 				String output = obj.executeCommand(outText);
-				//output.wait(2000);
+				output.wait(2000);
 				System.out.printf("\n%s", output);
 				}  catch (Exception e) {
 					
@@ -142,7 +137,7 @@ public class RhoInstall extends ExecuteShell{
 		//Install subscription-manager
 		try {
 			
-				String outText = "yum -y install subscription-manager";			
+				String outText = "yum install subscription-manager";			
 				String output = obj.executeCommand(outText);
 				//output.wait(2000);
 				System.out.printf("\n%s", output);
@@ -150,7 +145,7 @@ public class RhoInstall extends ExecuteShell{
 					
 			}
 		//Enable repos with subscription-manager for RHEL 7 only
-		if(version.compareTo(rhel7) == 0){
+		/*if(version.compareTo(rhel7) == 0){
 			try {
 			
 					String outText = "subscription-manager repos --enable rhel-7-server-extra-rpms";			
@@ -160,12 +155,12 @@ public class RhoInstall extends ExecuteShell{
 					}  catch (Exception e) {
 					
 					}
-			}
+			}*/
 		//Install Rho RHEL6 or RHEL7
 		if(version.compareTo(rhel7) == 0) {
 			try {
 					
-					String outText = "yum -y install rho";	
+					String outText = "yum install rho";	
 					outText.wait(3000);
 					String output = obj.executeCommand(outText);
 					System.out.printf("\n%s", output);
@@ -176,7 +171,7 @@ public class RhoInstall extends ExecuteShell{
 		if(version.compareTo(centos7) == 0) {
 			try {
 					
-					String outText = "yum -y install rho";	
+					String outText = "yum install rho";	
 					outText.wait(3000);
 					String output = obj.executeCommand(outText);
 					System.out.printf("\n%s", output);
@@ -213,6 +208,7 @@ public class RhoInstall extends ExecuteShell{
 		
 		System.out.print("\nRho has been successfully installed!\n\n");
 		System.out.print("Run command \"rho\" to view available commands\n\n");
+		
 		System.out.printf("%s\n\n",version);
 		
 	}

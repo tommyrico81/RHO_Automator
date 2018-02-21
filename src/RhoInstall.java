@@ -9,7 +9,11 @@ public class RhoInstall extends ExecuteShell{
 	public static void main( String[] args )
 	{
 		
-		String version = "RHEL7";
+		String version = "null";
+		String rhel7 = "RHEL7";
+		String rhel6 = "RHEL6";
+		String centos6 = "CentOS6";
+		String centos7 = "CentOS7";
 		
 		@SuppressWarnings("resource")
 		Scanner input = new Scanner( System.in );
@@ -146,7 +150,7 @@ public class RhoInstall extends ExecuteShell{
 					
 			}
 		//Enable repos with subscription-manager for RHEL 7 only
-		if(version == "RHEL7"){
+		if(version.compareTo(rhel7) == 0){
 			try {
 			
 					String outText = "subscription-manager repos --enable rhel-7-server-extra-rpms";			
@@ -158,7 +162,7 @@ public class RhoInstall extends ExecuteShell{
 					}
 			}
 		//Install Rho RHEL6 or RHEL7
-		if(version == "RHEL7") {
+		if(version.compareTo(rhel7) == 0) {
 			try {
 					
 					String outText = "yum -y install rho";	
@@ -169,7 +173,7 @@ public class RhoInstall extends ExecuteShell{
 							
 				}
 		}
-		if(version == "CentOS7") {
+		if(version.compareTo(centos7) == 0) {
 			try {
 					
 					String outText = "yum -y install rho";	
@@ -180,7 +184,7 @@ public class RhoInstall extends ExecuteShell{
 							
 				}
 		} 
-		if(version == "RHEL6") {
+		if(version.compareTo(rhel6) == 0) {
 			try {
 				
 				String outText = "yum -y install python-devel python-pip; easy_install -U pycrypto; \\\n" + 
@@ -192,7 +196,7 @@ public class RhoInstall extends ExecuteShell{
 						
 			}
 		}
-		if(version == "CentOS6") {
+		if(version.compareTo(centos6) == 0) {
 			try {
 				
 				String outText = "yum -y install python-devel python-pip; easy_install -U pycrypto; \\\n" + 

@@ -169,6 +169,10 @@ public class RhoInstall extends ExecuteShell{
 						String output = obj.executeCommand(outText);
 						System.out.printf("\n%s", output);
 					}
+					if(yes_no.contains("n") || yes_no.contains("no")){
+						System.out.print("Installation Cancelled\n");
+					}
+					break;
 			case "CentOS7":
 					System.out.print("Proceed with installation of rho?(type \"y\" or \"yes\")");
 					yes_no = input.nextLine();
@@ -177,6 +181,10 @@ public class RhoInstall extends ExecuteShell{
 						String output = obj.executeCommand(outText);
 						System.out.printf("\n%s", output);
 					}
+					if(yes_no.contains("n") || yes_no.contains("no")){
+						System.out.print("Installation Cancelled\n");
+					}
+					break;
 			case "RHEL6":	
 					System.out.print("Proceed with installation of rho?(type \"y\" or \"yes\")");
 					yes_no = input.nextLine();
@@ -185,6 +193,10 @@ public class RhoInstall extends ExecuteShell{
 						String output = obj.executeCommand(outText);
 						System.out.printf("\n%s", output);
 					}
+					if(yes_no.contains("n") || yes_no.contains("no")){
+						System.out.print("Installation Cancelled\n");
+					}
+					break;
 			case "CentOS6":
 					System.out.print("Proceed with installation of rho?(type \"y\" or \"yes\")");
 					yes_no = input.nextLine();
@@ -192,7 +204,11 @@ public class RhoInstall extends ExecuteShell{
 						String outText = "yum -y install python-devel python-pip; easy_install -U pycrypto; \\\n pip install -U Jinja2";
 						String output = obj.executeCommand(outText);
 						System.out.printf("\n%s", output);
-				}
+					}
+					if(yes_no.contains("n") || yes_no.contains("no")){
+						System.out.print("Installation Cancelled\n");
+					}
+					break;
 		}
 		//End Rho Install scripts
 		

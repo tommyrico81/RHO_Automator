@@ -51,6 +51,7 @@ public class RhoInstall extends ExecuteShell{
 		int distroInt = Integer.parseInt(distro);
 		
 		String yes_no;
+		
 		ExecuteShell obj = new ExecuteShell();
 		
 			switch(distroInt)
@@ -127,12 +128,11 @@ public class RhoInstall extends ExecuteShell{
 			
 				String outText = "yum repolist";			
 				String output = obj.executeCommand(outText);
-				output.wait(2000);
+				//output.wait(2000);
 				System.out.printf("\n%s", output);
 				}  catch (Exception e) {
 					
 			}
-		System.out.print("\n\nExtra packages successfully installed\n\n");
 		
 		//Install subscription-manager
 		try {
@@ -156,9 +156,13 @@ public class RhoInstall extends ExecuteShell{
 					
 					}
 			}*/
-		//Install Rho RHEL6 or RHEL7
-		if(version.compareTo(rhel7) == 0) {
-			try {
+		
+		System.out.print("\n\nExtra packages successfully installed\n\n");
+		
+		switch(version) {
+		
+			case "RHEL7":
+				try {
 					
 					String outText = "yum install rho";	
 					outText.wait(3000);
@@ -167,9 +171,8 @@ public class RhoInstall extends ExecuteShell{
 					}  catch (Exception e) {
 							
 				}
-		}
-		if(version.compareTo(centos7) == 0) {
-			try {
+			case "CentOS7":
+				try {
 					
 					String outText = "yum install rho";	
 					outText.wait(3000);
@@ -178,30 +181,28 @@ public class RhoInstall extends ExecuteShell{
 					}  catch (Exception e) {
 							
 				}
-		} 
-		if(version.compareTo(rhel6) == 0) {
-			try {
-				
-				String outText = "yum -y install python-devel python-pip; easy_install -U pycrypto; \\\n" + 
-						"pip install -U Jinja2";	
-				outText.wait(3000);
-				String output = obj.executeCommand(outText);
-				System.out.printf("\n%s", output);
-				}  catch (Exception e) {
-						
-			}
-		}
-		if(version.compareTo(centos6) == 0) {
-			try {
-				
-				String outText = "yum -y install python-devel python-pip; easy_install -U pycrypto; \\\n" + 
-						"pip install -U Jinja2";	
-				outText.wait(3000);
-				String output = obj.executeCommand(outText);
-				System.out.printf("\n%s", output);
-				}  catch (Exception e) {
-						
-			}
+			case "RHEL6":
+				try {
+					
+					String outText = "yum -y install python-devel python-pip; easy_install -U pycrypto; \\\n" + 
+							"pip install -U Jinja2";	
+					outText.wait(3000);
+					String output = obj.executeCommand(outText);
+					System.out.printf("\n%s", output);
+					}  catch (Exception e) {
+							
+				}
+			case "CentOS6":
+				try {
+					
+					String outText = "yum -y install python-devel python-pip; easy_install -U pycrypto; \\\n" + 
+							"pip install -U Jinja2";	
+					outText.wait(3000);
+					String output = obj.executeCommand(outText);
+					System.out.printf("\n%s", output);
+					}  catch (Exception e) {
+							
+				}
 		}
 		//End Rho Install scripts
 		
